@@ -145,6 +145,14 @@ describe Robot do
 
       expect(robot.location).to eq(x: 4, y: 0, direction: 'W')
     end
+
+    it 'remembers its last valid location when it gets lost' do
+      robot = Robot.new({ x: 5, y: 5 }, x: 3, y: 2, direction: 'W')
+
+      robot.move('LFLLLFFFFFFF')
+
+      expect(robot.location).to eq(x: 0, y: 1, direction: 'W')
+    end
   end
 
   describe 'lost' do
