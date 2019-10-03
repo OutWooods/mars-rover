@@ -5,4 +5,8 @@ class Robot
     @map = map
     @location = location
   end
+
+  def move(_directions)
+    @location[:y] += 1
+  end
 end

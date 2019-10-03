@@ -14,4 +14,14 @@ describe Robot do
       expect(robot.location).to eq(x: 1, y: 1, direction: 'N')
     end
   end
+
+  describe 'move' do
+    it 'moves upwards one if told F and is facing N' do
+      robot = Robot.new({ x: 3, y: 3 }, x: 1, y: 1, direction: 'N')
+
+      robot.move('F')
+
+      expect(robot.location).to eq(x: 1, y: 2, direction: 'N')
+    end
+  end
 end
