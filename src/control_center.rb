@@ -1,7 +1,9 @@
+require './src/robot.rb'
+
 class ControlCenter
   attr_reader :map, :robots
 
-  def initialize(map_axis, rover = '')
+  def initialize(map_axis, rover = Robot)
     map_coordinates = map_axis.split(' ')
     @map = { x: map_coordinates[0].to_i, y: map_coordinates[1].to_i }
     @roverClass = rover
