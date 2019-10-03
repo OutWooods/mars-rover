@@ -11,9 +11,9 @@ describe 'use multiple rovers' do
   it 'two rovers can get marked as lost' do
     control_center = ControlCenter.new('4 8')
     control_center.start_robot('(1, 0, S) FLLFR')
-    control_center.start_robot('(2, 3, N) FFFFRFF')
+    control_center.start_robot('(2, 3, N) FFFFRFFF')
 
-    expected_message = "(1, 0, S) LOST\n(4, 7, W) LOST\n"
+    expected_message = "(1, 0, S) LOST\n(4, 7, E) LOST\n"
     expect { control_center.robot_locations }.to output(expected_message).to_stdout
   end
 end
