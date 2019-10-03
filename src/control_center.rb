@@ -1,14 +1,15 @@
 require './src/robot.rb'
+require './src/location_printer.rb'
 
 class ControlCenter
   attr_reader :map, :robots
 
-  def initialize(map_axis, robot_class = Robot, robot_printer = '')
+  def initialize(map_axis, robot_class = Robot, location_printer = LocationPrinter.new)
     map_coordinates = map_axis.split(' ')
     @map = { x: map_coordinates[0].to_i, y: map_coordinates[1].to_i }
     @robot_class = robot_class
     @robots = []
-    @robot_printer = robot_printer
+    @location_printer = location_printer
   end
 
   def start_robot(instructions)
@@ -20,7 +21,7 @@ class ControlCenter
   end
 
   def robot_locations
-    @robot_printer.print(@robots)
+    @location_printer.print(@robots)
   end
 
   private
