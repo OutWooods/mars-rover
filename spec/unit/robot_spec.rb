@@ -15,7 +15,7 @@ describe Robot do
     end
   end
 
-  describe 'move' do
+  describe 'move - single movements' do
     it 'moves upwards one if told F and is facing N' do
       robot = Robot.new({ x: 3, y: 3 }, x: 1, y: 1, direction: 'N')
 
@@ -108,6 +108,16 @@ describe Robot do
       robot = Robot.new({ x: 3, y: 3 }, x: 1, y: 1, direction: 'W')
 
       robot.move('R')
+
+      expect(robot.location).to eq(x: 1, y: 1, direction: 'N')
+    end
+  end
+
+  describe 'move - multiple movements' do
+    it 'moving RRRR will result in the same start position' do
+      robot = Robot.new({ x: 3, y: 3 }, x: 1, y: 1, direction: 'N')
+
+      robot.move('RRRR')
 
       expect(robot.location).to eq(x: 1, y: 1, direction: 'N')
     end
