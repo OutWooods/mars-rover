@@ -1,30 +1,35 @@
 class Robot
   attr_reader :map, :location
 
-  def initialize(map, location)
+  DIRECTION_RULES = {
+    'N' => { axis: :y, change: 1, to_left: 'W' },
+    'E' => { axis: :x, change: 1, to_left: 'N' },
+    'S' => { axis: :y, change: -1, to_left: 'E' },
+    'W' => { axis: :x, change: -1, to_left: 'S' }
+  }.freeze
+
+  def initialize(map, location, direction_rules = DIRECTION_RULES)
     @map = map
     @location = location
+    @direction_rules = direction_rules
   end
 
   def move(directions)
     return forward if directions === 'F'
     return turn_left if directions === 'L'
-    @location[:direction] = 'E'
   end
 
   private
 
+  def current_rules
+    @direction_rules[@location[:direction]]
+  end
+
   def forward
-    return @location[:x] += 1 if @location[:direction] == 'E'
-    return @location[:y] -= 1 if @location[:direction] == 'S'
-    return @location[:x] -= 1 if @location[:direction] == 'W'
-    @location[:y] += 1
+    @location[current_rules[:axis]] += current_rules[:change]
   end
 
   def turn_left
-    return @location[:direction] = 'S' if @location[:direction] == 'W'
-    return @location[:direction] = 'E' if @location[:direction] == 'S'
-    return @location[:direction] = 'N' if @location[:direction] == 'E'
-    @location[:direction] = 'W'
+    @location[:direction] = current_rules[:to_left]
   end
 end
