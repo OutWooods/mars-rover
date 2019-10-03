@@ -8,4 +8,14 @@ describe ControlCenter do
       expect(control_center.map).to eq(x: 3, y: 5)
     end
   end
+
+  describe 'start_robot' do
+    it 'creates a new rover when called' do
+      rover = double('rover')
+      expect(rover).to receive(:new).with('(2, 3, N) FFLF').and_return(rover)
+
+      control_center = ControlCenter.new('3 4', rover)
+      control_center.start_robot('(2, 3, N) FFLF')
+    end
+  end
 end
