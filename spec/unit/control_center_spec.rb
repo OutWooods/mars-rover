@@ -12,20 +12,29 @@ describe ControlCenter do
   describe 'start_robot' do
     it 'creates a new rover when called' do
       rover = double('rover')
-      expect(rover).to receive(:new).with('(2, 3, N) FFLF').and_return(rover)
+      expect(rover).to receive(:new).with('(2, 3, N)').and_return(rover)
 
       control_center = ControlCenter.new('3 4', rover)
-      control_center.start_robot('(2, 3, N) FFLF')
+      control_center.start_robot('(2, 3, N)')
     end
 
     it 'stores each new rover' do
       rover = double('rover')
+      allow(rover).to receive(:new).with('(2, 3, N)').and_return(rover)
+
+      control_center = ControlCenter.new('3 4', rover)
+      control_center.start_robot('(2, 3, N)')
+
+      expect(control_center.robots).to eq([rover])
+    end
+
+    it 'calls move on rover if it has instructions' do
+      rover = double('rover')
       allow(rover).to receive(:new).with('(2, 3, N) FFLF').and_return(rover)
+      expect(rover).to receive(:move).with('FFLF')
 
       control_center = ControlCenter.new('3 4', rover)
       control_center.start_robot('(2, 3, N) FFLF')
-
-      expect(control_center.robots).to eq([rover])
     end
   end
 end
