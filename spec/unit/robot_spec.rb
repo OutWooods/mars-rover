@@ -39,5 +39,13 @@ describe Robot do
 
       expect(robot.location).to eq(x: 1, y: 0, direction: 'S')
     end
+
+    it 'moves left (negative x) one if told F and is facing W' do
+      robot = Robot.new({ x: 3, y: 3 }, x: 1, y: 1, direction: 'W')
+
+      robot.move('F')
+
+      expect(robot.location).to eq(x: 0, y: 1, direction: 'W')
+    end
   end
 end
