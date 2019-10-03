@@ -9,7 +9,10 @@ class ControlCenter
   end
 
   def start_robot(instructions)
-    robot = @roverClass.new(instructions)
+    robot_setup = instructions.split(')')
+
+    robot = @roverClass.new(robot_setup[0])
+    robot.move(robot_setup[1].strip) unless robot_setup[1].nil?
     @robots.push(robot)
   end
 end
