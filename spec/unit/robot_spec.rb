@@ -146,4 +146,14 @@ describe Robot do
       expect(robot.location).to eq(x: 4, y: 0, direction: 'W')
     end
   end
+
+  describe 'lost' do
+    it 'robot should be marked as lost when it goes too far north' do
+      robot = Robot.new({ x: 3, y: 3 }, x: 3, y: 3, direction: 'N')
+
+      robot.move('F')
+
+      expect(robot.lost?).to be true
+    end
+  end
 end

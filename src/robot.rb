@@ -22,6 +22,10 @@ class Robot
     end
   end
 
+  def lost?
+    true
+  end
+
   private
 
   def current_rules
