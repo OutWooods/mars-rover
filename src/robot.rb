@@ -23,7 +23,7 @@ class Robot
   end
 
   def lost?
-    @location[:y] > @map[:y] || @location[:y] < 0 || @location[:x] > @map[:x]
+    @location[:y] > @map[:y] || @location[:y] < 0 || @location[:x] > @map[:x] || @location[:x] < 0
   end
 
   private

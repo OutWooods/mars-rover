@@ -179,5 +179,13 @@ describe Robot do
 
       expect(robot.lost?).to be true
     end
+
+    it 'robot should be marked as lost when it is too west of the grid' do
+      robot = Robot.new({ x: 3, y: 4 }, x: 0, y: 2, direction: 'W')
+
+      robot.move('F')
+
+      expect(robot.lost?).to be true
+    end
   end
 end
