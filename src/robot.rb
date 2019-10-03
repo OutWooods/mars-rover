@@ -5,7 +5,7 @@ class Robot
     'N' => { axis: :y, change: 1, to_left: 'W', to_right: 'E' },
     'E' => { axis: :x, change: 1, to_left: 'N', to_right: 'S' },
     'S' => { axis: :y, change: -1, to_left: 'E', to_right: 'W' },
-    'W' => { axis: :x, change: -1, to_left: 'S' }
+    'W' => { axis: :x, change: -1, to_left: 'S', to_right: 'N' }
   }.freeze
 
   def initialize(map, location, direction_rules = DIRECTION_RULES)
