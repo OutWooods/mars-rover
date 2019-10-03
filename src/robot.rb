@@ -8,6 +8,7 @@ class Robot
 
   def move(_directions)
     return @location[:x] += 1 if @location[:direction] == 'E'
+    return @location[:y] -= 1 if @location[:direction] == 'S'
     @location[:y] += 1
   end
 end
