@@ -6,8 +6,9 @@ class Robot
     @location = location
   end
 
-  def move(_directions)
-    forward
+  def move(directions)
+    return forward if directions === 'F'
+    @location[:direction] = 'W'
   end
 
   private
