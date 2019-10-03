@@ -8,6 +8,7 @@ class Robot
 
   def move(directions)
     return forward if directions === 'F'
+    return @location[:direction] = 'S' if (directions === 'L') && (@location[:direction] == 'W')
     @location[:direction] = 'W'
   end
 
