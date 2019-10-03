@@ -35,9 +35,24 @@ describe ControlCenter do
 
     it 'calls move on rover if it has instructions' do
       allow(rover).to receive(:new).with({ x: 3, y: 4 }, x: 2, y: 3, direction: 'N').and_return(rover)
+
       expect(rover).to receive(:move).with('FFLF')
 
       control_center.start_robot('(2, 3, N) FFLF')
+    end
+  end
+
+  describe 'robot_locations' do
+    it 'calls print on printer with robots' do
+      rover = double('rover')
+      printer = double('rover_printer')
+      control_center = ControlCenter.new('3 4', rover, printer)
+      allow(rover).to receive(:new).with({ x: 3, y: 4 }, x: 2, y: 3, direction: 'N').and_return(rover)
+
+      expect(printer).to receive(:print).with([rover])
+
+      control_center.start_robot('(2, 3, N)')
+      control_center.robot_locations
     end
   end
 end
