@@ -8,10 +8,7 @@ class Robot
 
   def move(directions)
     return forward if directions === 'F'
-    return @location[:direction] = 'S' if (directions === 'L') && (@location[:direction] == 'W')
-    return @location[:direction] = 'E' if (directions === 'L') && (@location[:direction] == 'S')
-    return @location[:direction] = 'N' if (directions === 'L') && (@location[:direction] == 'E')
-    @location[:direction] = 'W'
+    turn_left
   end
 
   private
@@ -21,5 +18,12 @@ class Robot
     return @location[:y] -= 1 if @location[:direction] == 'S'
     return @location[:x] -= 1 if @location[:direction] == 'W'
     @location[:y] += 1
+  end
+
+  def turn_left
+    return @location[:direction] = 'S' if @location[:direction] == 'W'
+    return @location[:direction] = 'E' if @location[:direction] == 'S'
+    return @location[:direction] = 'N' if @location[:direction] == 'E'
+    @location[:direction] = 'W'
   end
 end
