@@ -5,6 +5,6 @@ describe 'use multiple rovers' do
     control_center.start_robot('(2, 3, N) FFLRF')
 
     expected_message = '(1, 2, N)/n(2, 3, W)'
-    expect { control_center.rover_locations }.to output(expected_message).to_stdout
+    expect { control_center.robot_locations }.to output(expected_message).to_stdout
   end
 end
