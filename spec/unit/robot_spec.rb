@@ -121,5 +121,13 @@ describe Robot do
 
       expect(robot.location).to eq(x: 1, y: 1, direction: 'N')
     end
+
+    it 'RL cancel each other out' do
+      robot = Robot.new({ x: 3, y: 3 }, x: 1, y: 1, direction: 'N')
+
+      robot.move('RL')
+
+      expect(robot.location).to eq(x: 1, y: 1, direction: 'N')
+    end
   end
 end

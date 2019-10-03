@@ -15,9 +15,11 @@ class Robot
   end
 
   def move(directions)
-    return forward if directions === 'F'
-    return turn_left if directions === 'L'
-    return turn_right if directions === 'R'
+    directions.split('').each do |direction|
+      forward if direction === 'F'
+      turn_left if direction === 'L'
+      turn_right if direction === 'R'
+    end
   end
 
   private
