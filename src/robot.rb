@@ -23,7 +23,7 @@ class Robot
   end
 
   def lost?
-    true
+    @location[:y] > @map[:y]
   end
 
   private

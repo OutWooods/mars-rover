@@ -155,5 +155,13 @@ describe Robot do
 
       expect(robot.lost?).to be true
     end
+
+    it 'robot should be not marked as lost when it is within the grid' do
+      robot = Robot.new({ x: 3, y: 4 }, x: 3, y: 3, direction: 'N')
+
+      robot.move('F')
+
+      expect(robot.lost?).to be false
+    end
   end
 end
