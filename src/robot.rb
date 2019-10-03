@@ -7,6 +7,12 @@ class Robot
   end
 
   def move(_directions)
+    forward
+  end
+
+  private
+
+  def forward
     return @location[:x] += 1 if @location[:direction] == 'E'
     return @location[:y] -= 1 if @location[:direction] == 'S'
     return @location[:x] -= 1 if @location[:direction] == 'W'
