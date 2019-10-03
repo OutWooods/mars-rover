@@ -4,7 +4,7 @@ class Robot
   DIRECTION_RULES = {
     'N' => { axis: :y, change: 1, to_left: 'W', to_right: 'E' },
     'E' => { axis: :x, change: 1, to_left: 'N', to_right: 'S' },
-    'S' => { axis: :y, change: -1, to_left: 'E' },
+    'S' => { axis: :y, change: -1, to_left: 'E', to_right: 'W' },
     'W' => { axis: :x, change: -1, to_left: 'S' }
   }.freeze
 

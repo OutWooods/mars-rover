@@ -95,5 +95,13 @@ describe Robot do
 
       expect(robot.location).to eq(x: 1, y: 1, direction: 'S')
     end
+
+    it 'rotates to W from S if it is told to turn right' do
+      robot = Robot.new({ x: 3, y: 3 }, x: 1, y: 1, direction: 'S')
+
+      robot.move('R')
+
+      expect(robot.location).to eq(x: 1, y: 1, direction: 'W')
+    end
   end
 end
