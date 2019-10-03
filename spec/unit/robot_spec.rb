@@ -130,12 +130,20 @@ describe Robot do
       expect(robot.location).to eq(x: 1, y: 1, direction: 'N')
     end
 
-    it 'LFRFLFRF moves up twice and left twice' do
+    it 'LFRFLFRF moves up twice and west twice' do
       robot = Robot.new({ x: 5, y: 5 }, x: 3, y: 1, direction: 'N')
 
       robot.move('LFRFLFRF')
 
       expect(robot.location).to eq(x: 1, y: 3, direction: 'N')
+    end
+
+    it 'starting west, LFFLFFLLF moves down twice and and east once' do
+      robot = Robot.new({ x: 5, y: 5 }, x: 3, y: 2, direction: 'W')
+
+      robot.move('LFFLFFLLF')
+
+      expect(robot.location).to eq(x: 4, y: 0, direction: 'W')
     end
   end
 end
