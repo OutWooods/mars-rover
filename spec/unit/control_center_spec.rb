@@ -17,5 +17,15 @@ describe ControlCenter do
       control_center = ControlCenter.new('3 4', rover)
       control_center.start_robot('(2, 3, N) FFLF')
     end
+
+    it 'stores each new rover' do
+      rover = double('rover')
+      allow(rover).to receive(:new).with('(2, 3, N) FFLF').and_return(rover)
+
+      control_center = ControlCenter.new('3 4', rover)
+      control_center.start_robot('(2, 3, N) FFLF')
+
+      expect(control_center.robots).to eq([rover])
+    end
   end
 end
