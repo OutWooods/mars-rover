@@ -2,7 +2,7 @@
 
 ## Information
 
-I did the actual technical part in 2:45 (with 30 minutes planning before hand - apologies, I did this over the time limit).
+I did the actual technical part in 2:45 (with 30 minutes planning before hand so 3:15 total,so this did go over the time limit).
 
 ## Next steps
 
